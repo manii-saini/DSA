@@ -1,0 +1,29 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "apple banana orange";
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss >> word) {
+
+        int count = 0;
+
+        for (char ch : word) {
+
+            ch = tolower(ch);
+
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                count++;
+        }
+
+        cout << word << " -> " << count << endl;
+    }
+
+    return 0;
+}
