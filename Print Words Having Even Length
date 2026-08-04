@@ -1,0 +1,20 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "I love C++ programming language";
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss >> word) {
+
+        if (word.length() % 2 == 0)
+            cout << word << " ";
+    }
+
+    return 0;
+}
