@@ -1,0 +1,40 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+void solve(string nums,string output,int index,vector<string>&ans)
+{
+    if(index>=nums.size())
+    {
+        ans.push_back(output);
+        return;
+    }
+
+    //exce
+    solve(nums,output,index+1,ans);
+
+    char element=nums[index];
+    output.push_back(element);
+
+    //incl
+    solve(nums,output,index+1,ans);
+
+    
+}
+vector<string> permutation( string nums)
+{
+    vector<string>ans;
+    string output="";
+    int index=0;
+    solve(nums,output,index,ans);
+    return ans;
+}
+int main()
+{
+    string nums="abc";
+    vector<string>ans=permutation(nums);
+    for(auto i:ans)
+    {
+        cout<<i<<endl;
+    }
+    return 0;
+}
