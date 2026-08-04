@@ -1,0 +1,30 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "I love C++ programming";
+    string target = "love";
+
+    stringstream ss(str);
+
+    string word;
+
+    bool found = false;
+
+    while (ss >> word) {
+
+        if (word == target) {
+            found = true;
+            break;
+        }
+    }
+
+    if (found)
+        cout << "Word Found";
+    else
+        cout << "Word Not Found";
+
+    return 0;
+}
