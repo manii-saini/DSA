@@ -1,0 +1,22 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "This is my book and this is good";
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss >> word) {
+
+        if (word == "is")
+            cout << "was ";
+        else
+            cout << word << " ";
+    }
+
+    return 0;
+}
