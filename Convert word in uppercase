@@ -1,0 +1,22 @@
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+
+    string str = "hello world welcome";
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss >> word) {
+
+        transform(word.begin(), word.end(), word.begin(), ::toupper);
+
+        cout << word << " ";
+    }
+
+    return 0;
+}
