@@ -1,0 +1,22 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "apple orange banana umbrella egg";
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss >> word) {
+
+        char ch = tolower(word[0]);
+
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            cout << word << endl;
+    }
+
+    return 0;
+}
