@@ -1,0 +1,41 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+int solve(string a,string b,int i,int j)
+{
+    if(i==a.size())
+    {
+        return 0;
+    }
+
+    if(j==b.size())
+    {
+        return 0;
+    }
+    int ans=0;
+
+    if(a[i]==b[j])
+    {
+        ans=1+solve(a,b,i+1,j+1);
+    }
+    else
+    {
+        ans=max(solve(a,b,i+1,j),solve(a,b,i,j+1));
+    }
+    return ans;
+}
+int LongestPlandromicSubsequence(string a,string b)
+{
+    int ans1=solve(a,b,0,0);
+    return ans1;
+}
+int main()
+{
+    string a="abc";
+    string b=a;
+    sort(b.begin(),b.end());
+    int ans2=LongestPlandromicSubsequence(a,b);
+    cout<<"The LongestPlandromicSubsequence is:"<<ans2;
+    return 0;
+}
