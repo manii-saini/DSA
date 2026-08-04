@@ -1,0 +1,26 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+
+    string str = "I love competitive programming";
+
+    stringstream ss(str);
+
+    string word;
+    string shortest;
+
+    ss >> shortest;
+
+    while (ss >> word) {
+
+        if (word.length() < shortest.length())
+            shortest = word;
+    }
+
+    cout << shortest;
+
+    return 0;
+}
+
