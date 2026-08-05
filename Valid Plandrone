@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool solve(string ans)
+    {
+        int start=0;
+        int end=ans.size()-1;
+        while(start<=end)
+        {
+            if(ans[start]!=ans[end])
+            {
+                return false;
+            }
+            else
+            {
+                start++;
+                end--;
+            }
+        }
+        return true;
+    }
+    bool isPalindrome(string s) {
+        transform(s.begin(),s.end(),s.begin(),::tolower);
+        string ans="";
+        for(char ch:s)
+        {
+            if(isalnum(ch))
+            {
+                ans+=ch;
+            }
+        }
+
+        return solve(ans);
+
+    }
+};
