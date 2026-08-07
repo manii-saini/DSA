@@ -1,0 +1,23 @@
+public:
+    int compress(vector<char>& chars) {
+        map<char,int> m;
+        for(char ch:chars)
+        {
+            m[ch]++;
+        }
+
+
+        vector<char>ans;
+        for(auto s:m)
+        {
+            ans.push_back(s.first);
+            if(s.second > 1)
+            {
+                ans.push_back(s.second);
+            }
+        }
+
+
+        return ans.size();
+    }
+};
