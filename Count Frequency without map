@@ -1,0 +1,26 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+void majroti(vector<int>nums)
+{
+    sort(nums.begin(),nums.end());
+    for(int val:nums)
+    {
+        int freq=0;
+        for(int el:nums)
+        {
+            if(val==el)
+            {
+                freq++;
+            }
+        }
+        cout<<val<<" : "<<freq<<endl;
+    }
+}
+int main()
+{
+    vector<int>nums={1,2,1,2,1};
+    majroti(nums);
+    return 0;
+}
