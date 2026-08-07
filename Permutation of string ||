@@ -1,0 +1,46 @@
+class Solution {
+public:
+    void solve(string s, int idx, vector<string>& ans)
+    {
+        if(idx == s.size())
+        {
+            ans.push_back(s);
+            return;
+        }
+
+
+        for(int i = idx; i < s.size(); i++)
+        {
+            swap(s[i], s[idx]);
+            solve(s, idx + 1, ans);
+            swap(s[i], s[idx]);
+        }
+    }
+
+
+    vector<string> permutation(string s)
+    {
+        vector<string> ans;
+        solve(s, 0, ans);
+        return ans;
+    }
+
+
+    bool checkInclusion(string s1, string s2) {
+
+
+        vector<string> ans = permutation(s1);   // Generate permutations of s1
+
+
+        for(string word : ans)
+        {
+            if(s2.find(word) != string::npos)   // Check if permutation is a substring
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+};
