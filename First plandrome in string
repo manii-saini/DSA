@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isplandrome(string s)
+    {
+        int start=0;
+        int end=s.size()-1;
+        while(start<=end)
+        {
+            if(s[start]!=s[end])
+            {
+                return false;
+            }
+            else
+            {
+                start++;
+                end--;
+            }
+        }
+        return true;
+    }
+    string firstPalindrome(vector<string>& words){
+        string ans="";
+        for(auto word:words)
+        {
+            if(isplandrome(word))
+            {
+                ans=word;
+                break;
+            }
+        }
+        return ans;
+    }   
+};
