@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int distinctAverages(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        set<double> s;
+
+        int start = 0;
+        int end = nums.size() - 1;
+
+        while(start < end) {
+            double ans = (nums[start] + nums[end]) / 2.0;
+            s.insert(ans);
+
+            start++;
+            end--;
+        }
+
+        return s.size();
+    }
+};
