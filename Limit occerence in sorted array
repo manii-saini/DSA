@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> limitOccurrences(vector<int>& nums, int k) {
+        vector<int> ans;
+
+        for (int x : nums) {
+            int freq = 0;
+
+            for (int y : ans) {
+                if (x == y) {
+                    freq++;
+                }
+            }
+
+            if (freq < k) {
+                ans.push_back(x);
+            }
+        }
+
+        return ans;
+    }
+};
