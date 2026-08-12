@@ -1,0 +1,46 @@
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode* temp = head;
+        vector<int> ans;
+
+        while(temp != NULL)
+        {
+            if(temp->val != 0)
+            {
+                int sum = 0;
+
+                while(temp->val != 0)
+                {
+                    sum += temp->val;
+                    temp = temp->next;
+                }
+
+                ans.push_back(sum);
+            }
+            else
+            {
+                temp = temp->next;
+            }
+        }
+
+        temp = head;
+        int i = 0;
+
+        while(i < ans.size())
+        {
+            temp->val = ans[i];
+            i++;
+
+            if(i == ans.size())
+            {
+                temp->next = NULL;
+                break;
+            }
+
+            temp = temp->next;
+        }
+
+        return head;
+    }
+};
