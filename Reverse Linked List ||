@@ -1,0 +1,28 @@
+class Solution {
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode* temp = head;
+        vector<int> ans;
+
+        // Store values
+        while (temp != NULL) {
+            ans.push_back(temp->val);
+            temp = temp->next;
+        }
+
+        // Reverse from left to right
+        reverse(ans.begin() + left - 1, ans.begin() + right);
+
+        // Put values back into linked list
+        temp = head;
+        int i = 0;
+
+        while (temp != NULL) {
+            temp->val = ans[i];
+            temp = temp->next;
+            i++;
+        }
+
+        return head;
+    }
+};
