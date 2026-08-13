@@ -1,0 +1,30 @@
+class Solution {
+public:
+    long long findTheArrayConcVal(vector<int>& nums) {
+        int start = 0;
+        int end = nums.size() - 1;
+        long long sum = 0;
+
+        while(start <= end)
+        {
+            if(start == end)
+            {
+                sum += nums[start];
+            }
+            else
+            {
+                string a = to_string(nums[start]);
+                string b = to_string(nums[end]);
+
+                string ans = a + b;
+
+                sum += stoll(ans);
+            }
+
+            start++;
+            end--;
+        }
+
+        return sum;
+    }
+};
