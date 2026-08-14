@@ -1,0 +1,66 @@
+class Solution {
+public:
+    string convertDateToBinary(string date) {
+        int year = stoi(date.substr(0, 4));
+        int month = stoi(date.substr(5, 2));
+        int day = stoi(date.substr(8, 2));
+
+        string ans = "";
+        stack<int> s;
+        int rem, num;
+
+        // Year
+        while(year > 0)
+        {
+            rem = year % 2;
+            s.push(rem);
+
+            num = year / 2;
+            year = num;
+        }
+
+        while(!s.empty())
+        {
+            ans += to_string(s.top());
+            s.pop();
+        }
+
+        ans += '-';
+
+        // Month
+        while(month > 0)
+        {
+            rem = month % 2;
+            s.push(rem);
+
+            num = month / 2;
+            month = num;
+        }
+
+        while(!s.empty())
+        {
+            ans += to_string(s.top());
+            s.pop();
+        }
+
+        ans += '-';
+
+        // Day
+        while(day > 0)
+        {
+            rem = day % 2;
+            s.push(rem);
+
+            num = day / 2;
+            day = num;
+        }
+
+        while(!s.empty())
+        {
+            ans += to_string(s.top());
+            s.pop();
+        }
+
+        return ans;
+    }
+};
