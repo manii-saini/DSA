@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool solve(const vector<vector<int>>& nums, int target, int row) {
+    int start = 0;
+    int end = nums[row].size() - 1;
+
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+
+        if (nums[row][mid] == target) {
+            return true;
+        } else if (target < nums[row][mid]) {
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+
+    return false;
+}
+
+bool binary_search(const vector<vector<int>>& nums, int target) {
+    if (nums.empty() || nums[0].empty()) {
+        return false;
+    }
+
+    int rows = nums.size();
+    int columns = nums[0].size();
+    int start = 0;
+    int end = rows - 1;
+
+    while (start <= end) {
+        int midrow = start + (end - start) / 2;
+
+        if (target >= nums[midrow][0] &&
+            target <= nums[midrow][columns - 1]) {
+            return solve(nums, target, midrow);
+        } else if (target > nums[midrow][columns - 1]) {
+            start = midrow + 1;
+        } else {
+            end = midrow - 1;
+        }
+    }
+
+    return false;
+}
+
+int main() {
+    vector<vector<int>> nums = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {10, 11, 12, 12},
+        {13, 14, 15, 16}
+    };
+
+    int target = 11;
+    cout << binary_search(nums, target) << '\n';
+
+    return 0;
+}
