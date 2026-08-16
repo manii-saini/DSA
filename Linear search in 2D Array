@@ -1,0 +1,43 @@
+#include<iostream>
+#include<climits>
+bool Linear_search(int arr[][3],int key)
+{
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            if(arr[i][j]==key)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+using namespace std;
+int main()
+{
+    int arr[3][3];
+    cout<<"Enter array element"<<endl;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cin>>arr[i][j];
+        }
+    }
+
+    cout<<"Array Elements is:"<<endl;
+
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cout<<arr[j][i]<<" ";
+        }
+        cout<<endl;
+    }
+    int key=5;
+    cout<<Linear_search(arr,key);
+    return 0;
+}
