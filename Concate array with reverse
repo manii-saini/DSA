@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> concatWithReverse(vector<int>& nums) {
+        vector<int>ans;
+        for(int val:nums)
+        {
+            ans.push_back(val);
+        }
+
+        stack<int>s;
+        for(int val:nums)
+        {
+            s.push(val);
+        }
+
+        while(!s.empty())
+        {
+            ans.push_back(s.top());
+            s.pop();
+        }
+
+        return ans;
+    }
+};
