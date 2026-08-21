@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool issortinc(vector<int> &nums, int n)
+    {
+        if(n == 1 || n == 0)
+        {
+            return true;
+        }
+
+        return nums[n-2] <= nums[n-1] && issortinc(nums, n-1);
+    }
+
+    bool issortdec(vector<int> &nums, int n)
+    {
+        if(n == 1 || n == 0)
+        {
+            return true;
+        }
+
+        return nums[n-1] <= nums[n-2] && issortdec(nums, n-1);
+    }
+
+    bool isMonotonic(vector<int>& nums) {
+        int n = nums.size();
+
+        if(issortinc(nums, n) || issortdec(nums, n))
+        {
+            return true;
+        }
+
+        return false;
+    }
+};
