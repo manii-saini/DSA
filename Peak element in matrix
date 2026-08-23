@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> findPeakGrid(vector<vector<int>>& mat) {
+        
+        int maxi = INT_MIN;
+
+        // Find maximum element
+        for(int i = 0; i < mat.size(); i++)
+        {
+            int rowMax = *max_element(mat[i].begin(), mat[i].end());
+
+            maxi = max(maxi, rowMax);
+        }
+
+        vector<int> ans;
+
+        // Find its position
+        for(int i = 0; i < mat.size(); i++)
+        {
+            for(int j = 0; j < mat[0].size(); j++)
+            {
+                if(mat[i][j] == maxi)
+                {
+                    ans.push_back(i);
+                    ans.push_back(j);
+                    return ans;
+                }
+            }
+        }
+
+        return ans;
+    }
+};
