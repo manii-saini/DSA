@@ -1,0 +1,77 @@
+class Solution {
+public:
+    bool canAssign(vector<int>& tasks, vector<int>& workers,
+                   int pills, int strength, int k)
+    {
+        multiset<int> available;
+
+        // Take strongest k workers
+        for(int i = workers.size() - k; i < workers.size(); i++)
+        {
+            available.insert(workers[i]);
+        }
+
+        // Assign easiest among selected k tasks
+        for(int i = k - 1; i >= 0; i--)
+        {
+            int task = tasks[i];
+
+            // Strongest worker can do it without pill
+            auto it = available.lower_bound(task);
+
+            if(it != available.end())
+            {
+                available.erase(it);
+            }
+            else
+            {
+                // Need a pill
+                if(pills == 0)
+                {
+                    return false;
+                }
+
+                // Find weakest worker that can do task after pill
+                it = available.lower_bound(task - strength);
+
+                if(it == available.end())
+                {
+                    return false;
+                }
+
+                available.erase(it);
+                pills--;
+            }
+        }
+
+        return true;
+    }
+
+    int maxTaskAssign(vector<int>& tasks, vector<int>& workers,
+                      int pills, int strength)
+    {
+        sort(tasks.begin(), tasks.end());
+        sort(workers.begin(), workers.end());
+
+        int start = 0;
+        int end = min(tasks.size(), workers.size());
+        int ans = 0;
+
+        while(start <= end)
+        {
+            int mid = start + (end - start) / 2;
+
+            if(canAssign(tasks, workers, pills, strength, mid))
+            {
+                ans = mid;
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+
+        return ans;
+    }
+};
