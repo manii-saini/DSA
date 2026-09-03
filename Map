@@ -1,0 +1,39 @@
+#include<iostream>
+#include<vector>
+#include<list>
+#include<deque>
+#include<stack>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<set>
+#include<unordered_set>
+#include<algorithm>
+using namespace std;
+int main()
+{   
+   map<string,int>m;
+   m["manish"]=1;
+   m["kumar"]=2;
+   m["saini"]=3;
+   m["madhu"]=4;
+   m["sapan"]=5;
+   m.insert({"pawan",7});
+   m.emplace("ravi",8);
+   m.erase("saini");
+   cout<<"saini:"<<m["saini"]<<endl;
+   cout<<"count:"<<m.count("saini")<<endl;
+   if(m.find("saini")!=m.end())
+    {
+        cout<<"frond";
+    }
+    else
+    {
+        cout<<"Not found:"<<endl;
+    }
+   for(auto ans:m)
+   {
+    cout<<ans.first<<" "<<ans.second<<endl;
+   }
+    return 0;
+}
