@@ -1,0 +1,27 @@
+#include<iostream>
+#include<vector>
+#include<list>
+#include<deque>
+#include<stack>
+#include<queue>
+#include<map>
+#include<unordered_map>
+#include<set>
+#include<unordered_set>
+#include<algorithm>
+using namespace std;
+int main()
+{   
+    pair<int,int>p={1,2};
+    cout<<"first:"<<p.first<<endl;
+    cout<<"second:"<<p.second<<endl;
+
+    cout<<endl;
+    cout<<endl;
+
+    pair<int,pair<char,int>>p1={1,{'w',5}};
+    cout<<"first:"<<p1.first<<endl;
+    cout<<"second ka first:"<<p1.second.first<<endl;
+    cout<<"second ka second:"<<p1.second.second<<endl;
+    return 0;
+}
